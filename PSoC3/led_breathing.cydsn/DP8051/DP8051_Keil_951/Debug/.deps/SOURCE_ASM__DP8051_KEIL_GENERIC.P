@@ -14,7 +14,3 @@ C:/Users/whits/Desktop/psoc/PSoC3/led_breathing.cydsn/DP8051/DP8051_Keil_951/Deb
 
 C:/Users/whits/Desktop/psoc/PSoC3/led_breathing.cydsn/Generated_Source/PSoC3/KeilStart.a51 : 
 
-C:/Users/whits/Desktop/psoc/PSoC3/led_breathing.cydsn/DP8051/DP8051_Keil_951/Debug/cymem.obj : C:/Users/whits/Desktop/psoc/PSoC3/led_breathing.cydsn/Generated_Source/PSoC3/cymem.a51 
-
-C:/Users/whits/Desktop/psoc/PSoC3/led_breathing.cydsn/Generated_Source/PSoC3/cymem.a51 : 
-

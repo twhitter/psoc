@@ -1,16 +1,16 @@
-C51 COMPILER V9.51   CLOCK_1                                                               05/25/2019 17:59:38 PAGE 1   
+C51 COMPILER V9.51   CLOCK_2                                                               05/25/2019 17:59:40 PAGE 1   
 
 
-C51 COMPILER V9.51, COMPILATION OF MODULE CLOCK_1
-OBJECT MODULE PLACED IN .\DP8051\DP8051_Keil_951\Debug\Clock_1.obj
+C51 COMPILER V9.51, COMPILATION OF MODULE CLOCK_2
+OBJECT MODULE PLACED IN .\DP8051\DP8051_Keil_951\Debug\Clock_2.obj
 COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
-                    -Generated_Source\PSoC3\Clock_1.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,Generated_Source\PSoC3) FF(3) DB DF(DEBUG) W
-                    -L(2) PR(.\DP8051\DP8051_Keil_951\Debug/Clock_1.lst) CD OT(2,SIZE) OJ(.\DP8051\DP8051_Keil_951\Debug\Clock_1.obj)
+                    -Generated_Source\PSoC3\Clock_2.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,Generated_Source\PSoC3) FF(3) DB DF(DEBUG) W
+                    -L(2) PR(.\DP8051\DP8051_Keil_951\Debug/Clock_2.lst) CD OT(2,SIZE) OJ(.\DP8051\DP8051_Keil_951\Debug\Clock_2.obj)
 
 line level    source
 
    1          /*******************************************************************************
-   2          * File Name: Clock_1.c
+   2          * File Name: Clock_2.c
    3          * Version 2.20
    4          *
    5          *  Description:
@@ -26,7 +26,7 @@ line level    source
   15          *******************************************************************************/
   16          
   17          #include <cydevice_trm.h>
-  18          #include "Clock_1.h"
+  18          #include "Clock_2.h"
   19          
   20          /* Clock Distribution registers. */
   21          #define CLK_DIST_LD              (* (reg8 *) CYREG_CLKDIST_LD)
@@ -39,7 +39,7 @@ line level    source
   28          
   29          
   30          /*******************************************************************************
-  31          * Function Name: Clock_1_Start
+  31          * Function Name: Clock_2_Start
   32          ********************************************************************************
   33          *
   34          * Summary:
@@ -53,18 +53,18 @@ line level    source
   42          *  None
   43          *
   44          *******************************************************************************/
-  45          void Clock_1_Start(void) 
+  45          void Clock_2_Start(void) 
   46          {
   47   1          /* Set the bit to enable the clock. */
-  48   1          Clock_1_CLKEN |= Clock_1_CLKEN_MASK;
-  49   1              Clock_1_CLKSTBY |= Clock_1_CLKSTBY_MASK;
+  48   1          Clock_2_CLKEN |= Clock_2_CLKEN_MASK;
+  49   1              Clock_2_CLKSTBY |= Clock_2_CLKSTBY_MASK;
   50   1      }
   51          
   52          
   53          /*******************************************************************************
-C51 COMPILER V9.51   CLOCK_1                                                               05/25/2019 17:59:38 PAGE 2   
+C51 COMPILER V9.51   CLOCK_2                                                               05/25/2019 17:59:40 PAGE 2   
 
-  54          * Function Name: Clock_1_Stop
+  54          * Function Name: Clock_2_Stop
   55          ********************************************************************************
   56          *
   57          * Summary:
@@ -81,11 +81,11 @@ line level    source
   68          *  None
   69          *
   70          *******************************************************************************/
-  71          void Clock_1_Stop(void) 
+  71          void Clock_2_Stop(void) 
   72          {
   73   1          /* Clear the bit to disable the clock. */
-  74   1          Clock_1_CLKEN &= (uint8)(~Clock_1_CLKEN_MASK);
-  75   1              Clock_1_CLKSTBY &= (uint8)(~Clock_1_CLKSTBY_MASK);
+  74   1          Clock_2_CLKEN &= (uint8)(~Clock_2_CLKEN_MASK);
+  75   1              Clock_2_CLKSTBY &= (uint8)(~Clock_2_CLKSTBY_MASK);
   76   1      }
   77          
   78          
@@ -93,7 +93,7 @@ line level    source
   80          
   81          
   82          /*******************************************************************************
-  83          * Function Name: Clock_1_StopBlock
+  83          * Function Name: Clock_2_StopBlock
   84          ********************************************************************************
   85          *
   86          * Summary:
@@ -110,9 +110,9 @@ line level    source
   97          *  None
   98          *
   99          *******************************************************************************/
- 100          void Clock_1_StopBlock(void) 
+ 100          void Clock_2_StopBlock(void) 
  101          {
- 102   1          if ((Clock_1_CLKEN & Clock_1_CLKEN_MASK) != 0u)
+ 102   1          if ((Clock_2_CLKEN & Clock_2_CLKEN_MASK) != 0u)
  103   1          {
  104   2      #if HAS_CLKDIST_LD_DISABLE
  105   2              uint16 oldDivider;
@@ -120,20 +120,20 @@ line level    source
  107   2              CLK_DIST_LD = 0u;
  108   2      
  109   2              /* Clear all the mask bits except ours. */
- 110   2      #if defined(Clock_1__CFG3)
-                      CLK_DIST_AMASK = Clock_1_CLKEN_MASK;
+ 110   2      #if defined(Clock_2__CFG3)
+                      CLK_DIST_AMASK = Clock_2_CLKEN_MASK;
                       CLK_DIST_DMASK = 0x00u;
               #else
- 114   2              CLK_DIST_DMASK = Clock_1_CLKEN_MASK;
+ 114   2              CLK_DIST_DMASK = Clock_2_CLKEN_MASK;
  115   2              CLK_DIST_AMASK = 0x00u;
-C51 COMPILER V9.51   CLOCK_1                                                               05/25/2019 17:59:38 PAGE 3   
+C51 COMPILER V9.51   CLOCK_2                                                               05/25/2019 17:59:40 PAGE 3   
 
- 116   2      #endif /* Clock_1__CFG3 */
+ 116   2      #endif /* Clock_2__CFG3 */
  117   2      
  118   2              /* Clear mask of bus clock. */
  119   2              CLK_DIST_BCFG2 &= (uint8)(~BCFG2_MASK);
  120   2      
- 121   2              oldDivider = CY_GET_REG16(Clock_1_DIV_PTR);
+ 121   2              oldDivider = CY_GET_REG16(Clock_2_DIV_PTR);
  122   2              CY_SET_REG16(CYREG_CLKDIST_WRK0, oldDivider);
  123   2              CLK_DIST_LD = CYCLK_LD_DISABLE | CYCLK_LD_SYNC_EN | CYCLK_LD_LOAD;
  124   2      
@@ -142,13 +142,13 @@ line level    source
  127   2      #endif /* HAS_CLKDIST_LD_DISABLE */
  128   2      
  129   2              /* Clear the bit to disable the clock. */
- 130   2              Clock_1_CLKEN &= (uint8)(~Clock_1_CLKEN_MASK);
- 131   2              Clock_1_CLKSTBY &= (uint8)(~Clock_1_CLKSTBY_MASK);
+ 130   2              Clock_2_CLKEN &= (uint8)(~Clock_2_CLKEN_MASK);
+ 131   2              Clock_2_CLKSTBY &= (uint8)(~Clock_2_CLKSTBY_MASK);
  132   2      
  133   2      #if HAS_CLKDIST_LD_DISABLE
  134   2              /* Clear the disable bit */
  135   2              CLK_DIST_LD = 0x00u;
- 136   2              CY_SET_REG16(Clock_1_DIV_PTR, oldDivider);
+ 136   2              CY_SET_REG16(Clock_2_DIV_PTR, oldDivider);
  137   2      #endif /* HAS_CLKDIST_LD_DISABLE */
  138   2          }
  139   1      }
@@ -156,7 +156,7 @@ line level    source
  141          
  142          
  143          /*******************************************************************************
- 144          * Function Name: Clock_1_StandbyPower
+ 144          * Function Name: Clock_2_StandbyPower
  145          ********************************************************************************
  146          *
  147          * Summary:
@@ -169,28 +169,28 @@ line level    source
  154          *  None
  155          *
  156          *******************************************************************************/
- 157          void Clock_1_StandbyPower(uint8 state) 
+ 157          void Clock_2_StandbyPower(uint8 state) 
  158          {
  159   1          if(state == 0u)
  160   1          {
- 161   2              Clock_1_CLKSTBY &= (uint8)(~Clock_1_CLKSTBY_MASK);
+ 161   2              Clock_2_CLKSTBY &= (uint8)(~Clock_2_CLKSTBY_MASK);
  162   2          }
  163   1          else
  164   1          {
- 165   2              Clock_1_CLKSTBY |= Clock_1_CLKSTBY_MASK;
+ 165   2              Clock_2_CLKSTBY |= Clock_2_CLKSTBY_MASK;
  166   2          }
  167   1      }
  168          
  169          
  170          /*******************************************************************************
- 171          * Function Name: Clock_1_SetDividerRegister
+ 171          * Function Name: Clock_2_SetDividerRegister
  172          ********************************************************************************
  173          *
  174          * Summary:
  175          *  Modifies the clock divider and, thus, the frequency. When the clock divider
  176          *  register is set to zero or changed from zero, the clock will be temporarily
  177          *  disabled in order to change the SSS mode bit. If the clock is enabled when
-C51 COMPILER V9.51   CLOCK_1                                                               05/25/2019 17:59:38 PAGE 4   
+C51 COMPILER V9.51   CLOCK_2                                                               05/25/2019 17:59:40 PAGE 4   
 
  178          *  SetDividerRegister is called, then the source clock must be running.
  179          *
@@ -207,17 +207,17 @@ line level    source
  190          *  None
  191          *
  192          *******************************************************************************/
- 193          void Clock_1_SetDividerRegister(uint16 clkDivider, uint8 restart)
+ 193          void Clock_2_SetDividerRegister(uint16 clkDivider, uint8 restart)
  194                                          
  195          {
  196   1          uint8 enabled;
  197   1      
- 198   1          uint8 currSrc = Clock_1_GetSourceRegister();
- 199   1          uint16 oldDivider = Clock_1_GetDividerRegister();
+ 198   1          uint8 currSrc = Clock_2_GetSourceRegister();
+ 199   1          uint16 oldDivider = Clock_2_GetDividerRegister();
  200   1      
  201   1          if (clkDivider != oldDivider)
  202   1          {
- 203   2              enabled = Clock_1_CLKEN & Clock_1_CLKEN_MASK;
+ 203   2              enabled = Clock_2_CLKEN & Clock_2_CLKEN_MASK;
  204   2      
  205   2              if ((currSrc == (uint8)CYCLK_SRC_SEL_CLK_SYNC_D) && ((oldDivider == 0u) || (clkDivider == 0u)))
  206   2              {
@@ -227,15 +227,15 @@ line level    source
  210   4                      /* Moving away from SSS, set the divider first so when SSS is cleared we    */
  211   4                      /* don't halt the clock.  Using the shadow load isn't required as the       */
  212   4                      /* divider is ignored while SSS is set.                                     */
- 213   4                      CY_SET_REG16(Clock_1_DIV_PTR, clkDivider);
- 214   4                      Clock_1_MOD_SRC &= (uint8)(~CYCLK_SSS);
+ 213   4                      CY_SET_REG16(Clock_2_DIV_PTR, clkDivider);
+ 214   4                      Clock_2_MOD_SRC &= (uint8)(~CYCLK_SSS);
  215   4                  }
  216   3                  else
  217   3                  {
  218   4                      /* Moving to SSS, set SSS which then ignores the divider and we can set     */
  219   4                      /* it without bothering with the shadow load.                               */
- 220   4                      Clock_1_MOD_SRC |= CYCLK_SSS;
- 221   4                      CY_SET_REG16(Clock_1_DIV_PTR, clkDivider);
+ 220   4                      Clock_2_MOD_SRC |= CYCLK_SSS;
+ 221   4                      CY_SET_REG16(Clock_2_DIV_PTR, clkDivider);
  222   4                  }
  223   3              }
  224   2              else
@@ -246,20 +246,20 @@ line level    source
  229   4                      CLK_DIST_LD = 0x00u;
  230   4      
  231   4                      /* Clear all the mask bits except ours. */
- 232   4      #if defined(Clock_1__CFG3)
-                              CLK_DIST_AMASK = Clock_1_CLKEN_MASK;
+ 232   4      #if defined(Clock_2__CFG3)
+                              CLK_DIST_AMASK = Clock_2_CLKEN_MASK;
                               CLK_DIST_DMASK = 0x00u;
               #else
- 236   4                      CLK_DIST_DMASK = Clock_1_CLKEN_MASK;
+ 236   4                      CLK_DIST_DMASK = Clock_2_CLKEN_MASK;
  237   4                      CLK_DIST_AMASK = 0x00u;
- 238   4      #endif /* Clock_1__CFG3 */
+ 238   4      #endif /* Clock_2__CFG3 */
  239   4                      /* Clear mask of bus clock. */
-C51 COMPILER V9.51   CLOCK_1                                                               05/25/2019 17:59:38 PAGE 5   
+C51 COMPILER V9.51   CLOCK_2                                                               05/25/2019 17:59:40 PAGE 5   
 
  240   4                      CLK_DIST_BCFG2 &= (uint8)(~BCFG2_MASK);
  241   4      
  242   4                      /* If clock is currently enabled, disable it if async or going from N-to-1*/
- 243   4                      if (((Clock_1_MOD_SRC & CYCLK_SYNC) == 0u) || (clkDivider == 0u))
+ 243   4                      if (((Clock_2_MOD_SRC & CYCLK_SYNC) == 0u) || (clkDivider == 0u))
  244   4                      {
  245   5      #if HAS_CLKDIST_LD_DISABLE
  246   5                          CY_SET_REG16(CYREG_CLKDIST_WRK0, oldDivider);
@@ -269,7 +269,7 @@ line level    source
  250   5                          while ((CLK_DIST_LD & CYCLK_LD_LOAD) != 0u) { }
  251   5      #endif /* HAS_CLKDIST_LD_DISABLE */
  252   5      
- 253   5                          Clock_1_CLKEN &= (uint8)(~Clock_1_CLKEN_MASK);
+ 253   5                          Clock_2_CLKEN &= (uint8)(~Clock_2_CLKEN_MASK);
  254   5      
  255   5      #if HAS_CLKDIST_LD_DISABLE
  256   5                          /* Clear the disable bit */
@@ -279,7 +279,7 @@ line level    source
  260   4                  }
  261   3      
  262   3                  /* Load divide value. */
- 263   3                  if ((Clock_1_CLKEN & Clock_1_CLKEN_MASK) != 0u)
+ 263   3                  if ((Clock_2_CLKEN & Clock_2_CLKEN_MASK) != 0u)
  264   3                  {
  265   4                      /* If the clock is still enabled, use the shadow registers */
  266   4                      CY_SET_REG16(CYREG_CLKDIST_WRK0, clkDivider);
@@ -290,8 +290,8 @@ line level    source
  271   3                  else
  272   3                  {
  273   4                      /* If the clock is disabled, set the divider directly */
- 274   4                      CY_SET_REG16(Clock_1_DIV_PTR, clkDivider);
- 275   4                                      Clock_1_CLKEN |= enabled;
+ 274   4                      CY_SET_REG16(Clock_2_DIV_PTR, clkDivider);
+ 275   4                                      Clock_2_CLKEN |= enabled;
  276   4                  }
  277   3              }
  278   2          }
@@ -299,7 +299,7 @@ line level    source
  280          
  281          
  282          /*******************************************************************************
- 283          * Function Name: Clock_1_GetDividerRegister
+ 283          * Function Name: Clock_2_GetDividerRegister
  284          ********************************************************************************
  285          *
  286          * Summary:
@@ -313,16 +313,16 @@ line level    source
  294          *  divide by 2, the return value will be 1.
  295          *
  296          *******************************************************************************/
- 297          uint16 Clock_1_GetDividerRegister(void) 
+ 297          uint16 Clock_2_GetDividerRegister(void) 
  298          {
- 299   1          return CY_GET_REG16(Clock_1_DIV_PTR);
+ 299   1          return CY_GET_REG16(Clock_2_DIV_PTR);
  300   1      }
  301          
-C51 COMPILER V9.51   CLOCK_1                                                               05/25/2019 17:59:38 PAGE 6   
+C51 COMPILER V9.51   CLOCK_2                                                               05/25/2019 17:59:40 PAGE 6   
 
  302          
  303          /*******************************************************************************
- 304          * Function Name: Clock_1_SetModeRegister
+ 304          * Function Name: Clock_2_SetModeRegister
  305          ********************************************************************************
  306          *
  307          * Summary:
@@ -350,14 +350,14 @@ line level    source
  329          *  None
  330          *
  331          *******************************************************************************/
- 332          void Clock_1_SetModeRegister(uint8 modeBitMask) 
+ 332          void Clock_2_SetModeRegister(uint8 modeBitMask) 
  333          {
- 334   1          Clock_1_MOD_SRC |= modeBitMask & (uint8)Clock_1_MODE_MASK;
+ 334   1          Clock_2_MOD_SRC |= modeBitMask & (uint8)Clock_2_MODE_MASK;
  335   1      }
  336          
  337          
  338          /*******************************************************************************
- 339          * Function Name: Clock_1_ClearModeRegister
+ 339          * Function Name: Clock_2_ClearModeRegister
  340          ********************************************************************************
  341          *
  342          * Summary:
@@ -382,19 +382,19 @@ line level    source
  361          *   the clock. Specifically, see the CLKDIST.DCFG.CFG2 register.
  362          *
  363          * Returns:
-C51 COMPILER V9.51   CLOCK_1                                                               05/25/2019 17:59:38 PAGE 7   
+C51 COMPILER V9.51   CLOCK_2                                                               05/25/2019 17:59:40 PAGE 7   
 
  364          *  None
  365          *
  366          *******************************************************************************/
- 367          void Clock_1_ClearModeRegister(uint8 modeBitMask) 
+ 367          void Clock_2_ClearModeRegister(uint8 modeBitMask) 
  368          {
- 369   1          Clock_1_MOD_SRC &= (uint8)(~modeBitMask) | (uint8)(~(uint8)(Clock_1_MODE_MASK));
+ 369   1          Clock_2_MOD_SRC &= (uint8)(~modeBitMask) | (uint8)(~(uint8)(Clock_2_MODE_MASK));
  370   1      }
  371          
  372          
  373          /*******************************************************************************
- 374          * Function Name: Clock_1_GetModeRegister
+ 374          * Function Name: Clock_2_GetModeRegister
  375          ********************************************************************************
  376          *
  377          * Summary:
@@ -408,14 +408,14 @@ line level    source
  385          *  ClearModeRegister descriptions for details about the mode bits.
  386          *
  387          *******************************************************************************/
- 388          uint8 Clock_1_GetModeRegister(void) 
+ 388          uint8 Clock_2_GetModeRegister(void) 
  389          {
- 390   1          return Clock_1_MOD_SRC & (uint8)(Clock_1_MODE_MASK);
+ 390   1          return Clock_2_MOD_SRC & (uint8)(Clock_2_MODE_MASK);
  391   1      }
  392          
  393          
  394          /*******************************************************************************
- 395          * Function Name: Clock_1_SetSourceRegister
+ 395          * Function Name: Clock_2_SetSourceRegister
  396          ********************************************************************************
  397          *
  398          * Summary:
@@ -439,41 +439,41 @@ line level    source
  416          *  None
  417          *
  418          *******************************************************************************/
- 419          void Clock_1_SetSourceRegister(uint8 clkSource) 
+ 419          void Clock_2_SetSourceRegister(uint8 clkSource) 
  420          {
- 421   1          uint16 currDiv = Clock_1_GetDividerRegister();
- 422   1          uint8 oldSrc = Clock_1_GetSourceRegister();
+ 421   1          uint16 currDiv = Clock_2_GetDividerRegister();
+ 422   1          uint8 oldSrc = Clock_2_GetSourceRegister();
  423   1      
  424   1          if (((oldSrc != ((uint8)CYCLK_SRC_SEL_CLK_SYNC_D)) && 
  425   1              (clkSource == ((uint8)CYCLK_SRC_SEL_CLK_SYNC_D))) && (currDiv == 0u))
-C51 COMPILER V9.51   CLOCK_1                                                               05/25/2019 17:59:38 PAGE 8   
+C51 COMPILER V9.51   CLOCK_2                                                               05/25/2019 17:59:40 PAGE 8   
 
  426   1          {
  427   2              /* Switching to Master and divider is 1, set SSS, which will output master, */
  428   2              /* then set the source so we are consistent.                                */
- 429   2              Clock_1_MOD_SRC |= CYCLK_SSS;
- 430   2              Clock_1_MOD_SRC =
- 431   2                  (Clock_1_MOD_SRC & (uint8)(~Clock_1_SRC_SEL_MSK)) | clkSource;
+ 429   2              Clock_2_MOD_SRC |= CYCLK_SSS;
+ 430   2              Clock_2_MOD_SRC =
+ 431   2                  (Clock_2_MOD_SRC & (uint8)(~Clock_2_SRC_SEL_MSK)) | clkSource;
  432   2          }
  433   1          else if (((oldSrc == ((uint8)CYCLK_SRC_SEL_CLK_SYNC_D)) && 
  434   1                  (clkSource != ((uint8)CYCLK_SRC_SEL_CLK_SYNC_D))) && (currDiv == 0u))
  435   1          {
  436   2              /* Switching from Master to not and divider is 1, set source, so we don't   */
  437   2              /* lock when we clear SSS.                                                  */
- 438   2              Clock_1_MOD_SRC =
- 439   2                  (Clock_1_MOD_SRC & (uint8)(~Clock_1_SRC_SEL_MSK)) | clkSource;
- 440   2              Clock_1_MOD_SRC &= (uint8)(~CYCLK_SSS);
+ 438   2              Clock_2_MOD_SRC =
+ 439   2                  (Clock_2_MOD_SRC & (uint8)(~Clock_2_SRC_SEL_MSK)) | clkSource;
+ 440   2              Clock_2_MOD_SRC &= (uint8)(~CYCLK_SSS);
  441   2          }
  442   1          else
  443   1          {
- 444   2              Clock_1_MOD_SRC =
- 445   2                  (Clock_1_MOD_SRC & (uint8)(~Clock_1_SRC_SEL_MSK)) | clkSource;
+ 444   2              Clock_2_MOD_SRC =
+ 445   2                  (Clock_2_MOD_SRC & (uint8)(~Clock_2_SRC_SEL_MSK)) | clkSource;
  446   2          }
  447   1      }
  448          
  449          
  450          /*******************************************************************************
- 451          * Function Name: Clock_1_GetSourceRegister
+ 451          * Function Name: Clock_2_GetSourceRegister
  452          ********************************************************************************
  453          *
  454          * Summary:
@@ -486,17 +486,17 @@ line level    source
  461          *  The input source of the clock. See SetSourceRegister for details.
  462          *
  463          *******************************************************************************/
- 464          uint8 Clock_1_GetSourceRegister(void) 
+ 464          uint8 Clock_2_GetSourceRegister(void) 
  465          {
- 466   1          return Clock_1_MOD_SRC & Clock_1_SRC_SEL_MSK;
+ 466   1          return Clock_2_MOD_SRC & Clock_2_SRC_SEL_MSK;
  467   1      }
  468          
  469          
- 470          #if defined(Clock_1__CFG3)
+ 470          #if defined(Clock_2__CFG3)
               
               
               /*******************************************************************************
-              * Function Name: Clock_1_SetPhaseRegister
+              * Function Name: Clock_2_SetPhaseRegister
               ********************************************************************************
               *
               * Summary:
@@ -510,20 +510,20 @@ line level    source
               *   disable the clock. clkPhase = 1 produces a 0ns delay and clkPhase = 11 
               *   produces a 10ns delay.
               *
-C51 COMPILER V9.51   CLOCK_1                                                               05/25/2019 17:59:38 PAGE 9   
+C51 COMPILER V9.51   CLOCK_2                                                               05/25/2019 17:59:40 PAGE 9   
 
               * Returns:
               *  None
               *
               *******************************************************************************/
-              void Clock_1_SetPhaseRegister(uint8 clkPhase) 
+              void Clock_2_SetPhaseRegister(uint8 clkPhase) 
               {
-                  Clock_1_PHASE = clkPhase & Clock_1_PHASE_MASK;
+                  Clock_2_PHASE = clkPhase & Clock_2_PHASE_MASK;
               }
               
               
               /*******************************************************************************
-              * Function Name: Clock_1_GetPhase
+              * Function Name: Clock_2_GetPhase
               ********************************************************************************
               *
               * Summary:
@@ -537,21 +537,21 @@ line level    source
               *  Phase of the analog clock. See SetPhaseRegister for details.
               *
               *******************************************************************************/
-              uint8 Clock_1_GetPhaseRegister(void) 
+              uint8 Clock_2_GetPhaseRegister(void) 
               {
-                  return Clock_1_PHASE & Clock_1_PHASE_MASK;
+                  return Clock_2_PHASE & Clock_2_PHASE_MASK;
               }
               
-              #endif /* Clock_1__CFG3 */
+              #endif /* Clock_2__CFG3 */
  519          
  520          
  521          /* [] END OF FILE */
-C51 COMPILER V9.51   CLOCK_1                                                               05/25/2019 17:59:38 PAGE 10  
+C51 COMPILER V9.51   CLOCK_2                                                               05/25/2019 17:59:40 PAGE 10  
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
 
-             ; FUNCTION Clock_1_Start (BEGIN)
+             ; FUNCTION Clock_2_Start (BEGIN)
                                            ; SOURCE LINE # 45
                                            ; SOURCE LINE # 46
                                            ; SOURCE LINE # 48
@@ -559,7 +559,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0003 E0                MOVX    A,@DPTR
 0004 FF                MOV     R7,A
 0005 EF                MOV     A,R7
-0006 4402              ORL     A,#02H
+0006 4401              ORL     A,#01H
 0008 FF                MOV     R7,A
 0009 EF                MOV     A,R7
 000A F0                MOVX    @DPTR,A
@@ -568,15 +568,15 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 000E E0                MOVX    A,@DPTR
 000F FF                MOV     R7,A
 0010 EF                MOV     A,R7
-0011 4402              ORL     A,#02H
+0011 4401              ORL     A,#01H
 0013 FF                MOV     R7,A
 0014 EF                MOV     A,R7
 0015 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 50
 0016 22                RET     
-             ; FUNCTION Clock_1_Start (END)
+             ; FUNCTION Clock_2_Start (END)
 
-             ; FUNCTION Clock_1_Stop (BEGIN)
+             ; FUNCTION Clock_2_Stop (BEGIN)
                                            ; SOURCE LINE # 71
                                            ; SOURCE LINE # 72
                                            ; SOURCE LINE # 74
@@ -584,7 +584,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0003 E0                MOVX    A,@DPTR
 0004 FF                MOV     R7,A
 0005 EF                MOV     A,R7
-0006 54FD              ANL     A,#0FDH
+0006 54FE              ANL     A,#0FEH
 0008 FF                MOV     R7,A
 0009 EF                MOV     A,R7
 000A F0                MOVX    @DPTR,A
@@ -593,15 +593,15 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 000E E0                MOVX    A,@DPTR
 000F FF                MOV     R7,A
 0010 EF                MOV     A,R7
-0011 54FD              ANL     A,#0FDH
+0011 54FE              ANL     A,#0FEH
 0013 FF                MOV     R7,A
 0014 EF                MOV     A,R7
 0015 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 76
 0016 22                RET     
-             ; FUNCTION Clock_1_Stop (END)
+             ; FUNCTION Clock_2_Stop (END)
 
-             ; FUNCTION Clock_1_StopBlock (BEGIN)
+             ; FUNCTION Clock_2_StopBlock (BEGIN)
                                            ; SOURCE LINE # 100
                                            ; SOURCE LINE # 101
                                            ; SOURCE LINE # 102
@@ -609,8 +609,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0003 E0                MOVX    A,@DPTR
 0004 FF                MOV     R7,A
 0005 EF                MOV     A,R7
-0006 5402              ANL     A,#02H
-C51 COMPILER V9.51   CLOCK_1                                                               05/25/2019 17:59:38 PAGE 11  
+0006 5401              ANL     A,#01H
+C51 COMPILER V9.51   CLOCK_2                                                               05/25/2019 17:59:40 PAGE 11  
 
 0008 FF                MOV     R7,A
 0009 7E00              MOV     R6,#00H
@@ -624,7 +624,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0013 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 114
 0014 904010            MOV     DPTR,#04010H
-0017 7402              MOV     A,#02H
+0017 7401              MOV     A,#01H
 0019 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 115
 001A 904014            MOV     DPTR,#04014H
@@ -642,7 +642,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 121
 002A 7B02              MOV     R3,#02H
 002C 7A40              MOV     R2,#040H
-002E 7984              MOV     R1,#084H
+002E 7980              MOV     R1,#080H
 0030 120000      E     LCALL   _cyread16_nodpx
 0033 900000      R     MOV     DPTR,#oldDivider
 0036 EE                MOV     A,R6
@@ -674,7 +674,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0058 5401              ANL     A,#01H
 005A FF                MOV     R7,A
 005B 7E00              MOV     R6,#00H
-C51 COMPILER V9.51   CLOCK_1                                                               05/25/2019 17:59:38 PAGE 12  
+C51 COMPILER V9.51   CLOCK_2                                                               05/25/2019 17:59:40 PAGE 12  
 
 005D EF                MOV     A,R7
 005E 4E                ORL     A,R6
@@ -685,7 +685,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0064 E0                MOVX    A,@DPTR
 0065 FF                MOV     R7,A
 0066 EF                MOV     A,R7
-0067 54FD              ANL     A,#0FDH
+0067 54FE              ANL     A,#0FEH
 0069 FF                MOV     R7,A
 006A EF                MOV     A,R7
 006B F0                MOVX    @DPTR,A
@@ -694,7 +694,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 006F E0                MOVX    A,@DPTR
 0070 FF                MOV     R7,A
 0071 EF                MOV     A,R7
-0072 54FD              ANL     A,#0FDH
+0072 54FE              ANL     A,#0FEH
 0074 FF                MOV     R7,A
 0075 EF                MOV     A,R7
 0076 F0                MOVX    @DPTR,A
@@ -705,7 +705,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 136
 007C 7B02              MOV     R3,#02H
 007E 7A40              MOV     R2,#040H
-0080 7984              MOV     R1,#084H
+0080 7980              MOV     R1,#080H
 0082 900000      R     MOV     DPTR,#oldDivider
 0085 E0                MOVX    A,@DPTR
 0086 FC                MOV     R4,A
@@ -717,9 +717,9 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 139
 008D         ?C0006:
 008D 22                RET     
-             ; FUNCTION Clock_1_StopBlock (END)
+             ; FUNCTION Clock_2_StopBlock (END)
 
-             ; FUNCTION _Clock_1_StandbyPower (BEGIN)
+             ; FUNCTION _Clock_2_StandbyPower (BEGIN)
                                            ; SOURCE LINE # 157
 0000 900000      R     MOV     DPTR,#state
 0003 EF                MOV     A,R7
@@ -737,8 +737,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0010 E0                MOVX    A,@DPTR
 0011 FF                MOV     R7,A
 0012 EF                MOV     A,R7
-0013 54FD              ANL     A,#0FDH
-C51 COMPILER V9.51   CLOCK_1                                                               05/25/2019 17:59:38 PAGE 13  
+0013 54FE              ANL     A,#0FEH
+C51 COMPILER V9.51   CLOCK_2                                                               05/25/2019 17:59:40 PAGE 13  
 
 0015 FF                MOV     R7,A
 0016 EF                MOV     A,R7
@@ -752,7 +752,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 001C E0                MOVX    A,@DPTR
 001D FF                MOV     R7,A
 001E EF                MOV     A,R7
-001F 4402              ORL     A,#02H
+001F 4401              ORL     A,#01H
 0021 FF                MOV     R7,A
 0022 EF                MOV     A,R7
 0023 F0                MOVX    @DPTR,A
@@ -760,9 +760,9 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 167
 0024         ?C0009:
 0024 22                RET     
-             ; FUNCTION _Clock_1_StandbyPower (END)
+             ; FUNCTION _Clock_2_StandbyPower (END)
 
-             ; FUNCTION _Clock_1_SetDividerRegister (BEGIN)
+             ; FUNCTION _Clock_2_SetDividerRegister (BEGIN)
                                            ; SOURCE LINE # 193
 0000 900000      R     MOV     DPTR,#clkDivider
 0003 EE                MOV     A,R6
@@ -775,12 +775,12 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 000C F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 195
                                            ; SOURCE LINE # 198
-000D 120000      R     LCALL   Clock_1_GetSourceRegister
+000D 120000      R     LCALL   Clock_2_GetSourceRegister
 0010 900000      R     MOV     DPTR,#currSrc
 0013 EF                MOV     A,R7
 0014 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 199
-0015 120000      R     LCALL   Clock_1_GetDividerRegister
+0015 120000      R     LCALL   Clock_2_GetDividerRegister
 0018 900000      R     MOV     DPTR,#oldDivider
 001B EE                MOV     A,R6
 001C F0                MOVX    @DPTR,A
@@ -802,7 +802,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 002F FD                MOV     R5,A
 0030 ED                MOV     A,R5
 0031 6F                XRL     A,R7
-C51 COMPILER V9.51   CLOCK_1                                                               05/25/2019 17:59:38 PAGE 14  
+C51 COMPILER V9.51   CLOCK_2                                                               05/25/2019 17:59:40 PAGE 14  
 
 0032 7002              JNZ     ?C0038
 0034 EC                MOV     A,R4
@@ -816,7 +816,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 003E E0                MOVX    A,@DPTR
 003F FF                MOV     R7,A
 0040 EF                MOV     A,R7
-0041 5402              ANL     A,#02H
+0041 5401              ANL     A,#01H
 0043 FF                MOV     R7,A
 0044 900000      R     MOV     DPTR,#enabled
 0047 EF                MOV     A,R7
@@ -861,18 +861,18 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 213
 0075 7B02              MOV     R3,#02H
 0077 7A40              MOV     R2,#040H
-0079 7984              MOV     R1,#084H
+0079 7980              MOV     R1,#080H
 007B 900000      R     MOV     DPTR,#clkDivider
 007E E0                MOVX    A,@DPTR
 007F FC                MOV     R4,A
 0080 A3                INC     DPTR
-C51 COMPILER V9.51   CLOCK_1                                                               05/25/2019 17:59:38 PAGE 15  
+C51 COMPILER V9.51   CLOCK_2                                                               05/25/2019 17:59:40 PAGE 15  
 
 0081 E0                MOVX    A,@DPTR
 0082 FD                MOV     R5,A
 0083 120000      E     LCALL   _cywrite16_nodpx
                                            ; SOURCE LINE # 214
-0086 904086            MOV     DPTR,#04086H
+0086 904082            MOV     DPTR,#04082H
 0089 E0                MOVX    A,@DPTR
 008A FF                MOV     R7,A
 008B EF                MOV     A,R7
@@ -885,7 +885,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0092         ?C0013:
                                            ; SOURCE LINE # 217
                                            ; SOURCE LINE # 220
-0092 904086            MOV     DPTR,#04086H
+0092 904082            MOV     DPTR,#04082H
 0095 E0                MOVX    A,@DPTR
 0096 FF                MOV     R7,A
 0097 EF                MOV     A,R7
@@ -896,7 +896,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 221
 009D 7B02              MOV     R3,#02H
 009F 7A40              MOV     R2,#040H
-00A1 7984              MOV     R1,#084H
+00A1 7980              MOV     R1,#080H
 00A3 900000      R     MOV     DPTR,#clkDivider
 00A6 E0                MOVX    A,@DPTR
 00A7 FC                MOV     R4,A
@@ -922,7 +922,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00BB F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 236
 00BC 904010            MOV     DPTR,#04010H
-00BF 7402              MOV     A,#02H
+00BF 7401              MOV     A,#01H
 00C1 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 237
 00C2 904014            MOV     DPTR,#04014H
@@ -930,7 +930,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00C6 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 240
 00C7 904008            MOV     DPTR,#04008H
-C51 COMPILER V9.51   CLOCK_1                                                               05/25/2019 17:59:38 PAGE 16  
+C51 COMPILER V9.51   CLOCK_2                                                               05/25/2019 17:59:40 PAGE 16  
 
 00CA E0                MOVX    A,@DPTR
 00CB FF                MOV     R7,A
@@ -940,7 +940,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00D0 EF                MOV     A,R7
 00D1 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 243
-00D2 904086            MOV     DPTR,#04086H
+00D2 904082            MOV     DPTR,#04082H
 00D5 E0                MOVX    A,@DPTR
 00D6 FF                MOV     R7,A
 00D7 EF                MOV     A,R7
@@ -994,9 +994,9 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0116 E0                MOVX    A,@DPTR
 0117 FF                MOV     R7,A
 0118 EF                MOV     A,R7
-C51 COMPILER V9.51   CLOCK_1                                                               05/25/2019 17:59:38 PAGE 17  
+C51 COMPILER V9.51   CLOCK_2                                                               05/25/2019 17:59:40 PAGE 17  
 
-0119 54FD              ANL     A,#0FDH
+0119 54FE              ANL     A,#0FEH
 011B FF                MOV     R7,A
 011C EF                MOV     A,R7
 011D F0                MOVX    @DPTR,A
@@ -1012,7 +1012,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0126 E0                MOVX    A,@DPTR
 0127 FF                MOV     R7,A
 0128 EF                MOV     A,R7
-0129 5402              ANL     A,#02H
+0129 5401              ANL     A,#01H
 012B FF                MOV     R7,A
 012C 7E00              MOV     R6,#00H
 012E EF                MOV     A,R7
@@ -1058,7 +1058,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0163 7E00              MOV     R6,#00H
 0165 EF                MOV     A,R7
 0166 4E                ORL     A,R6
-C51 COMPILER V9.51   CLOCK_1                                                               05/25/2019 17:59:38 PAGE 18  
+C51 COMPILER V9.51   CLOCK_2                                                               05/25/2019 17:59:40 PAGE 18  
 
 0167 602B              JZ      ?C0027
 0169 80EF              SJMP    ?C0024
@@ -1070,7 +1070,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 274
 016C 7B02              MOV     R3,#02H
 016E 7A40              MOV     R2,#040H
-0170 7984              MOV     R1,#084H
+0170 7980              MOV     R1,#080H
 0172 900000      R     MOV     DPTR,#clkDivider
 0175 E0                MOVX    A,@DPTR
 0176 FC                MOV     R4,A
@@ -1100,31 +1100,31 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 279
 0194         ?C0027:
 0194 22                RET     
-             ; FUNCTION _Clock_1_SetDividerRegister (END)
+             ; FUNCTION _Clock_2_SetDividerRegister (END)
 
-             ; FUNCTION Clock_1_GetDividerRegister (BEGIN)
+             ; FUNCTION Clock_2_GetDividerRegister (BEGIN)
                                            ; SOURCE LINE # 297
                                            ; SOURCE LINE # 298
                                            ; SOURCE LINE # 299
 0000 7B02              MOV     R3,#02H
 0002 7A40              MOV     R2,#040H
-0004 7984              MOV     R1,#084H
+0004 7980              MOV     R1,#080H
 0006 120000      E     LCALL   _cyread16_nodpx
                                            ; SOURCE LINE # 300
 0009         ?C0028:
 0009 22                RET     
-             ; FUNCTION Clock_1_GetDividerRegister (END)
+             ; FUNCTION Clock_2_GetDividerRegister (END)
 
-             ; FUNCTION _Clock_1_SetModeRegister (BEGIN)
+             ; FUNCTION _Clock_2_SetModeRegister (BEGIN)
                                            ; SOURCE LINE # 332
 0000 900000      R     MOV     DPTR,#modeBitMask
 0003 EF                MOV     A,R7
 0004 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 333
                                            ; SOURCE LINE # 334
-C51 COMPILER V9.51   CLOCK_1                                                               05/25/2019 17:59:38 PAGE 19  
+C51 COMPILER V9.51   CLOCK_2                                                               05/25/2019 17:59:40 PAGE 19  
 
-0005 904086            MOV     DPTR,#04086H
+0005 904082            MOV     DPTR,#04082H
 0008 C083              PUSH    DPH
 000A C082              PUSH    DPL
 000C E0                MOVX    A,@DPTR
@@ -1144,16 +1144,16 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 001F F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 335
 0020 22                RET     
-             ; FUNCTION _Clock_1_SetModeRegister (END)
+             ; FUNCTION _Clock_2_SetModeRegister (END)
 
-             ; FUNCTION _Clock_1_ClearModeRegister (BEGIN)
+             ; FUNCTION _Clock_2_ClearModeRegister (BEGIN)
                                            ; SOURCE LINE # 367
 0000 900000      R     MOV     DPTR,#modeBitMask
 0003 EF                MOV     A,R7
 0004 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 368
                                            ; SOURCE LINE # 369
-0005 904086            MOV     DPTR,#04086H
+0005 904082            MOV     DPTR,#04082H
 0008 C083              PUSH    DPH
 000A C082              PUSH    DPL
 000C E0                MOVX    A,@DPTR
@@ -1176,33 +1176,33 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0022 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 370
 0023 22                RET     
-             ; FUNCTION _Clock_1_ClearModeRegister (END)
+             ; FUNCTION _Clock_2_ClearModeRegister (END)
 
-             ; FUNCTION Clock_1_GetModeRegister (BEGIN)
+             ; FUNCTION Clock_2_GetModeRegister (BEGIN)
                                            ; SOURCE LINE # 388
                                            ; SOURCE LINE # 389
                                            ; SOURCE LINE # 390
-0000 904086            MOV     DPTR,#04086H
+0000 904082            MOV     DPTR,#04082H
 0003 E0                MOVX    A,@DPTR
 0004 FF                MOV     R7,A
 0005 EF                MOV     A,R7
-C51 COMPILER V9.51   CLOCK_1                                                               05/25/2019 17:59:38 PAGE 20  
+C51 COMPILER V9.51   CLOCK_2                                                               05/25/2019 17:59:40 PAGE 20  
 
 0006 54F8              ANL     A,#0F8H
 0008 FF                MOV     R7,A
                                            ; SOURCE LINE # 391
 0009         ?C0031:
 0009 22                RET     
-             ; FUNCTION Clock_1_GetModeRegister (END)
+             ; FUNCTION Clock_2_GetModeRegister (END)
 
-             ; FUNCTION _Clock_1_SetSourceRegister (BEGIN)
+             ; FUNCTION _Clock_2_SetSourceRegister (BEGIN)
                                            ; SOURCE LINE # 419
 0000 900000      R     MOV     DPTR,#clkSource
 0003 EF                MOV     A,R7
 0004 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 420
                                            ; SOURCE LINE # 421
-0005 120000      R     LCALL   Clock_1_GetDividerRegister
+0005 120000      R     LCALL   Clock_2_GetDividerRegister
 0008 900000      R     MOV     DPTR,#currDiv
 000B EE                MOV     A,R6
 000C F0                MOVX    @DPTR,A
@@ -1210,7 +1210,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 000E EF                MOV     A,R7
 000F F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 422
-0010 120000      R     LCALL   Clock_1_GetSourceRegister
+0010 120000      R     LCALL   Clock_2_GetSourceRegister
 0013 900000      R     MOV     DPTR,#oldSrc
 0016 EF                MOV     A,R7
 0017 F0                MOVX    @DPTR,A
@@ -1236,7 +1236,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0032 7022              JNZ     ?C0032
                                            ; SOURCE LINE # 426
                                            ; SOURCE LINE # 429
-0034 904086            MOV     DPTR,#04086H
+0034 904082            MOV     DPTR,#04082H
 0037 E0                MOVX    A,@DPTR
 0038 FF                MOV     R7,A
 0039 EF                MOV     A,R7
@@ -1245,12 +1245,12 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 003D EF                MOV     A,R7
 003E F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 431
-003F 904086            MOV     DPTR,#04086H
+003F 904082            MOV     DPTR,#04082H
 0042 E0                MOVX    A,@DPTR
 0043 FF                MOV     R7,A
 0044 EF                MOV     A,R7
 0045 54F8              ANL     A,#0F8H
-C51 COMPILER V9.51   CLOCK_1                                                               05/25/2019 17:59:38 PAGE 21  
+C51 COMPILER V9.51   CLOCK_2                                                               05/25/2019 17:59:40 PAGE 21  
 
 0047 FF                MOV     R7,A
 0048 900000      R     MOV     DPTR,#clkSource
@@ -1259,7 +1259,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 004D EF                MOV     A,R7
 004E 4E                ORL     A,R6
 004F FF                MOV     R7,A
-0050 904086            MOV     DPTR,#04086H
+0050 904082            MOV     DPTR,#04082H
 0053 EF                MOV     A,R7
 0054 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 432
@@ -1287,7 +1287,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0070 7022              JNZ     ?C0034
                                            ; SOURCE LINE # 435
                                            ; SOURCE LINE # 439
-0072 904086            MOV     DPTR,#04086H
+0072 904082            MOV     DPTR,#04082H
 0075 E0                MOVX    A,@DPTR
 0076 FF                MOV     R7,A
 0077 EF                MOV     A,R7
@@ -1299,11 +1299,11 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0080 EF                MOV     A,R7
 0081 4E                ORL     A,R6
 0082 FF                MOV     R7,A
-0083 904086            MOV     DPTR,#04086H
+0083 904082            MOV     DPTR,#04082H
 0086 EF                MOV     A,R7
 0087 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 440
-0088 904086            MOV     DPTR,#04086H
+0088 904082            MOV     DPTR,#04082H
 008B E0                MOVX    A,@DPTR
 008C FF                MOV     R7,A
 008D EF                MOV     A,R7
@@ -1314,11 +1314,11 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 441
 0093 22                RET     
 0094         ?C0034:
-C51 COMPILER V9.51   CLOCK_1                                                               05/25/2019 17:59:38 PAGE 22  
+C51 COMPILER V9.51   CLOCK_2                                                               05/25/2019 17:59:40 PAGE 22  
 
                                            ; SOURCE LINE # 443
                                            ; SOURCE LINE # 445
-0094 904086            MOV     DPTR,#04086H
+0094 904082            MOV     DPTR,#04082H
 0097 E0                MOVX    A,@DPTR
 0098 FF                MOV     R7,A
 0099 EF                MOV     A,R7
@@ -1330,20 +1330,20 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00A2 EF                MOV     A,R7
 00A3 4E                ORL     A,R6
 00A4 FF                MOV     R7,A
-00A5 904086            MOV     DPTR,#04086H
+00A5 904082            MOV     DPTR,#04082H
 00A8 EF                MOV     A,R7
 00A9 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 446
                                            ; SOURCE LINE # 447
 00AA         ?C0036:
 00AA 22                RET     
-             ; FUNCTION _Clock_1_SetSourceRegister (END)
+             ; FUNCTION _Clock_2_SetSourceRegister (END)
 
-             ; FUNCTION Clock_1_GetSourceRegister (BEGIN)
+             ; FUNCTION Clock_2_GetSourceRegister (BEGIN)
                                            ; SOURCE LINE # 464
                                            ; SOURCE LINE # 465
                                            ; SOURCE LINE # 466
-0000 904086            MOV     DPTR,#04086H
+0000 904082            MOV     DPTR,#04082H
 0003 E0                MOVX    A,@DPTR
 0004 FF                MOV     R7,A
 0005 EF                MOV     A,R7
@@ -1352,7 +1352,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 467
 0009         ?C0037:
 0009 22                RET     
-             ; FUNCTION Clock_1_GetSourceRegister (END)
+             ; FUNCTION Clock_2_GetSourceRegister (END)
 
 
 

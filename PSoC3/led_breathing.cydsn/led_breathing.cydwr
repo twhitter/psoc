@@ -251,6 +251,7 @@
   <Data key="DataVersionKey" value="2" />
   <Group key="DWRInstGuidMapping">
     <Group key="Pin">
+      <Data key="02be643c-8067-4825-9faa-180797968a22" value="Pin_LED_2" />
       <Data key="e851a3b9-efb8-48be-bbb8-b303b216c393" value="Pin_LED" />
     </Group>
   </Group>
@@ -1034,6 +1035,11 @@
     </Group>
   </Group>
   <Group key="Pin2">
+    <Group key="02be643c-8067-4825-9faa-180797968a22">
+      <Group key="0">
+        <Data key="Port Format" value="6,2" />
+      </Group>
+    </Group>
     <Group key="e851a3b9-efb8-48be-bbb8-b303b216c393">
       <Group key="0">
         <Data key="Port Format" value="6,6" />

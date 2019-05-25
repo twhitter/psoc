@@ -1,27 +1,31 @@
 /* ========================================
  *
- * Copyright YOUR COMPANY, THE YEAR
- * All Rights Reserved
- * UNPUBLISHED, LICENSED SOFTWARE.
- *
- * CONFIDENTIAL AND PROPRIETARY INFORMATION
- * WHICH IS THE PROPERTY OF your company.
+ * Simple Breathing LED Project 
  *
  * ========================================
 */
 #include "project.h"
 
-int main(void)
+void led_breathe_fast (void)
 {
-    CyGlobalIntEnable; /* Enable global interrupts. */
-
-    /* Place your initialization/startup code here (e.g. MyInst_Start()) */
-    PWM_1_Start();
-    PWM_2_Start();
-    for(;;)
-    {
-        /* Place your application code here. */
-    }
+    PWM_3_Start();
+    PWM_4_Start();
 }
 
-/* [] END OF FILE */
+void led_breathe_slow (void)
+{
+    PWM_1_Start();
+    PWM_2_Start();
+}
+    
+int main(void)
+{
+    CyGlobalIntEnable; // Enable global interrupts
+
+    // Startup code begin
+    led_breathe_fast();
+    led_breathe_slow();
+    // Startup code end
+
+    for(;;){}
+}
