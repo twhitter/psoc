@@ -50,3 +50,9 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+#PSoC Creator Specific
+PSoC3.cywrk.whits
+PSoC3.cywrk.whits
+codegentemp/
+Generated_Source/
